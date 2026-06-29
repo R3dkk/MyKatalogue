@@ -10,9 +10,7 @@ Kelompok     : 4
 
 2. Nama Anggota 2 : Satrio Ananda Widiyanto
    NIM            : L0125066
-   Kontribusi     : [Contoh: Membuat modul Sorting untuk antrean 
-                    paket makanan, mengelola input Scanner, 
-                    dan melakukan debugging program]
+   Kontribusi     : Membuat Sorting Helper, Membuat alur navigasi (Main.java), mengelola validasi input harga dan rating pengguna serta menyesuaikan beberapa kode program.
 
 3. Nama Anggota 3 : Reditya Aflah Fadhali 
    NIM            : L0125123
