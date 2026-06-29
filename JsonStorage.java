@@ -9,7 +9,13 @@ import java.util.regex.Pattern;
 public class JsonStorage {
 
     /**
-     * Serializes a list of products into JSON and writes it to a file.
+     * Mengubah list produk menjadi format JSON (serialization) dan menulisnya ke file disk.
+     * 
+     * ANALISIS KOMPLEKSITAS WAKTU:
+     * - O(N)
+     * Penjelasan:
+     * N adalah jumlah produk yang ada di dalam list. Loop melakukan iterasi sebanyak N kali untuk 
+     * memformat setiap objek produk ke bentuk string JSON secara linear.
      */
     public static void saveProducts(String filePath, List<Product> products) {
         StringBuilder sb = new StringBuilder();
@@ -39,7 +45,13 @@ public class JsonStorage {
     }
 
     /**
-     * Reads a list of products from a JSON file.
+     * Membaca file disk JSON dan mengubahnya kembali menjadi list objek produk (deserialization).
+     * 
+     * ANALISIS KOMPLEKSITAS WAKTU:
+     * - O(N)
+     * Penjelasan:
+     * N adalah jumlah produk yang berhasil ditemukan dan diparsing di dalam file JSON.
+     * Regex matcher memindai konten file secara linear untuk mengekstrak data dari N blok objek { ... } yang ada.
      */
     public static List<Product> loadProducts(String filePath) {
         List<Product> list = new ArrayList<>();
@@ -49,7 +61,6 @@ public class JsonStorage {
 
         try {
             String jsonContent = new String(Files.readAllBytes(Paths.get(filePath)));
-            // Find all JSON object blocks: { ... }
             Pattern pattern = Pattern.compile("\\{[^\\}]+\\}");
             Matcher matcher = pattern.matcher(jsonContent);
 
@@ -71,8 +82,7 @@ public class JsonStorage {
     }
 
     private static String extractStringField(String jsonText, String fieldName) {
-        // Match: "fieldName" : "value" (supporting escape sequences like \")
-        Pattern p = Pattern.compile("\"" + fieldName + "\"\\s*:\\s*\"((?:[^\"\\\\]|\\\\.)*)\"");
+        Pattern p = Pattern.compile("\"" + fieldName + "\"\\s*:\\s*\"([^\"]*)\"");
         Matcher m = p.matcher(jsonText);
         if (m.find()) {
             return unescapeJson(m.group(1));
@@ -81,7 +91,6 @@ public class JsonStorage {
     }
 
     private static double extractDoubleField(String jsonText, String fieldName) {
-        // Match: "fieldName" : value
         Pattern p = Pattern.compile("\"" + fieldName + "\"\\s*:\\s*([0-9\\.]+)");
         Matcher m = p.matcher(jsonText);
         if (m.find()) {
@@ -95,7 +104,8 @@ public class JsonStorage {
     }
 
     private static String escapeJson(String text) {
-        if (text == null) return "";
+        if (text == null)
+            return "";
         return text.replace("\\", "\\\\")
                    .replace("\"", "\\\"")
                    .replace("\n", "\\n")
@@ -104,7 +114,8 @@ public class JsonStorage {
     }
 
     private static String unescapeJson(String text) {
-        if (text == null) return "";
+        if (text == null)
+            return "";
         return text.replace("\\\\", "\\")
                    .replace("\\\"", "\"")
                    .replace("\\n", "\n")

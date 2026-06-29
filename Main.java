@@ -160,6 +160,19 @@ public class Main {
         displayProductList(products);
     }
 
+    /**
+     * Fitur pencarian produk berdasarkan kategori.
+     * Mengambil input kategori dari pengguna, lalu melakukan query ke ProductManager.
+     * Hasil pencarian akan diurutkan berdasarkan rating tertinggi secara default.
+     * 
+     * ANALISIS KOMPLEKSITAS WAKTU:
+     * - O(N log N)
+     * Penjelasan:
+     * N adalah jumlah produk dalam kategori yang ditemukan.
+     * Mengambil produk dari indeks kategori membutuhkan waktu O(1) rata-rata.
+     * Mengurutkan hasil pencarian menggunakan Merge Sort memakan waktu O(N log N) yang mendominasi keseluruhan fungsi ini.
+     * Menampilkan daftar ke layar memakan waktu O(N).
+     */
     private static void cariKategori() {
         printHeader("CARI PRODUK BERDASARKAN KATEGORI");
         System.out.print("Masukkan Kategori: ");
@@ -180,6 +193,18 @@ public class Main {
         }
     }
 
+    /**
+     * Fitur pencarian berdasarkan kata kunci pada ringkasan produk.
+     * Memecah ringkasan menjadi kata-kata kunci dan mencarinya di index ringkasan produk.
+     * Hasil pencarian akan ditampilkan dan diurutkan berdasarkan rating tertinggi secara default.
+     * 
+     * ANALISIS KOMPLEKSITAS WAKTU:
+     * - O(N log N)
+     * Penjelasan:
+     * N adalah jumlah produk yang cocok dengan kata kunci hasil penelusuran.
+     * Melakukan pemecahan query pencarian dan pencarian di HashMap indeks memakan waktu cepat.
+     * Penggabungan produk unik ke dalam set dan pengurutan hasil akhir menggunakan Merge Sort memakan waktu O(N log N) yang mendominasi performa fungsi ini.
+     */
     private static void cariKataKunci() {
         printHeader("CARI BERDASARKAN KATA KUNCI (SUMMARY INDEX)");
         System.out.print("Masukkan Kata Kunci: ");
@@ -200,6 +225,17 @@ public class Main {
         }
     }
 
+    /**
+     * Menu interaktif untuk mengelola daftar kata kunci terlarang.
+     * Pengguna dapat melihat daftar aktif, menambah kata kunci baru, atau menghapus kata kunci.
+     * 
+     * ANALISIS KOMPLEKSITAS WAKTU:
+     * - O(N) per perubahan kata kunci
+     * Penjelasan:
+     * N adalah jumlah seluruh kata kunci terlarang aktif dalam filter.
+     * Setiap kali ada penambahan atau penghapusan kata terlarang, sistem melakukan kompilasi ulang Regex Pattern 
+     * secara linear terhadap total kata kunci aktif O(N).
+     */
     private static void kelolaKataKunci() {
         boolean subRunning = true;
         while (subRunning) {
@@ -243,6 +279,16 @@ public class Main {
         }
     }
 
+    /**
+     * Menampilkan daftar produk ke dalam format tabel.
+     * Pengguna juga diberi opsi untuk memilih nomor produk tertentu guna melihat informasi detail produk.
+     * 
+     * ANALISIS KOMPLEKSITAS WAKTU:
+     * - O(N)
+     * Penjelasan:
+     * N adalah jumlah produk di dalam list yang dilewatkan.
+     * Fungsi melakukan iterasi linear sebanyak N kali untuk mencetak setiap baris produk.
+     */
     private static void displayProductList(List<Product> list) {
         System.out.printf("\n%-4s | %-25s | %-12s | %-15s | %-6s\n", "No", "Nama Produk", "Kategori", "Harga", "Rating");
         System.out.println("-----------------------------------------------------------------------");
