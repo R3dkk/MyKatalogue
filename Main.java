@@ -66,7 +66,7 @@ public class Main {
      */
     private static void printHeader(String title) {
         System.out.println("\n=======================================================================");
-        System.out.println("                     " + title);
+        System.out.println("                  " + title);
         System.out.println("=======================================================================");
     }
 
