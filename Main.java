@@ -20,7 +20,7 @@ public class Main {
         boolean running = true;
         // Loop 'while' ini menjaga agar program terus berjalan sampai user memilih menu 6
         while (running) {
-            printHeader("MyKatalogue");
+            printHeader("MyKatalogue | PRODUCT SUMMARY MANAGER");
             System.out.println("1. Tambah Produk Baru");
             System.out.println("2. Lihat Katalog Produk (Terurut)");
             System.out.println("3. Cari Produk berdasarkan Kategori");
