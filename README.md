@@ -1,13 +1,13 @@
 <img src="./public/banner.png">
 
-<p align="justify">MyKatalogue adalah aplikasi pencatatan katalog produk berbasis terminal (CLI) yang ditulis menggunakan Java. Aplikasi ini dirancang agar kita bisa mengelola inventaris barang dengan lebih rapi; mulai dari menambah produk baru, mengurutkan daftar barang, hingga mencari produk secara spesifik lewat kata kunci. Keunggulan utama dari MyKatalogue adalah penyimpanan datanya yang praktis menggunakan JSON, serta adanya fitur Spam Filter otomatis yang akan menyensor kata-kata terlarang secara real-time. Dengan begitu, setiap data deskripsi produk yang tersimpan dipastikan akan selalu aman dari teks yang tidak pantas.</p>
+<p align="justify">MyKatalogue adalah aplikasi pencatatan katalog produk berbasis terminal (CLI) yang ditulis menggunakan Java. Aplikasi ini dirancang agar kita bisa mengelola inventaris barang dengan lebih rapi; mulai dari menambah produk baru, mengurutkan daftar barang, hingga mencari produk secara spesifik lewat kata kunci. Keunggulan utama dari MyKatalogue adalah penyimpanan datanya yang praktis menggunakan JSON, serta adanya fitur Spam Filter otomatis yang akan memblokir dan menolak input kata-kata terlarang secara real-time. Dengan begitu, setiap data deskripsi produk yang tersimpan dipastikan akan selalu aman dari teks yang tidak pantas.</p>
 
 ## Features
 
 - **Penyimpanan Persisten (JSON)**: Menyimpan data produk secara permanen ke dalam berkas `products.json` untuk mencegah kehilangan data saat program dihentikan.
 - **Pengurutan Terstruktur (Sorting)**: Menyediakan mekanisme pengurutan katalog berdasarkan kriteria spesifik, meliputi *rating*, harga, dan urutan alfabetis.
 - **Pencarian Terindeks (Searching)**: Mengimplementasikan pencarian data produk yang efisien berdasarkan pencocokan kategori maupun kata kunci (*keyword*).
-- **Sensor Teks Otomatis (Spam Filter)**: Mendeteksi dan menyensor kata-kata terlarang pada input pengguna secara *real-time*, disertai kemampuan pengelolaan daftar leksikon secara dinamis.
+- **Sensor Teks Otomatis (Spam Filter)**: Mendeteksi dan memblokir seketika (*reject*) kata-kata terlarang pada input pengguna secara *real-time*, disertai kemampuan pengelolaan daftar leksikon secara dinamis.
 
 ## Data Structure & Algorithm
 Aplikasi ini diimplementasikan menggunakan serangkaian struktur data dan algoritma komputasional untuk mengoptimasi efisiensi eksekusi program:
@@ -25,8 +25,12 @@ Aplikasi ini diimplementasikan menggunakan serangkaian struktur data dan algorit
    - **Rasionalisasi**: *Merge Sort* dikategorikan sebagai *stable sort* yang proporsional untuk struktur objek kompleks. Algoritma ini memberikan jaminan matematis kompleksitas waktu **O(n log n)** pada keseluruhan skenario komputasi (*best-case, average-case,* maupun *worst-case*), menghindari degradasi performa yang mungkin terjadi pada koleksi objek berskala masif.
 
 4. **Regular Expression (`Pattern` & `Matcher`)**
-   - **Fungsi**: Diintegrasikan dalam modul pengolahan string untuk proses identifikasi dan substitusi leksikon terlarang pada spesifikasi dan deskripsi produk.
-   - **Rasionalisasi**: Ekspresi reguler memfasilitasi pencocokan *string* komposit secara dinamis secara efisien. Pemanfaatan representasi token batas leksikal (*word boundaries* / `\b`) mendikotomi identifikasi hanya pada kata utuh, meminimalisasi tingkat probabilitas *false positives* (kesalahan sensor) pada *substring* parsial.
+   - **Fungsi**: Diintegrasikan dalam modul pengolahan *string* untuk proses identifikasi dan validasi penolakan leksikon terlarang pada spesifikasi maupun deskripsi produk.
+   - **Rasionalisasi**: Ekspresi reguler memfasilitasi pencocokan *string* komposit secara dinamis dan efisien. Pemanfaatan representasi token batas leksikal (*word boundaries* / `\b`) mendikotomi identifikasi hanya pada kata utuh, meminimalisasi tingkat probabilitas *false positives* (kesalahan pemblokiran) pada *substring* parsial.
+
+5. **Struktur Data LinkedHashSet (`matchedProducts`)**
+   - **Fungsi**: Digunakan sebagai kontainer penampung hasil akhir pada fitur pencarian berbasis kata kunci (*keyword search*).
+   - **Rasionalisasi**: Mengeliminasi duplikasi produk sekaligus mempertahankan urutan penyisipan data (*insertion order*). Hal ini memastikan bahwa produk yang ditemukan pertama kali (berdasarkan hierarki kata kunci) akan direpresentasikan pada urutan teratas, memberikan hasil pencarian yang rasional secara berurutan.
 
 ## Installation & Usage
 

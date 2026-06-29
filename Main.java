@@ -187,9 +187,6 @@ public class Main {
         displayProductList(products);
     }
 
-        displayProductList(products);
-    }
-
     /**
      * Fitur pencarian produk berdasarkan kategori.
      * Mengambil input kategori dari pengguna, lalu melakukan query ke ProductManager.
