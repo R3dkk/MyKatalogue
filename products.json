@@ -1,0 +1,42 @@
+[
+  {
+    "name": "iPhone 15 Pro Max iBox",
+    "category": "Gadget",
+    "price": 22000000.0,
+    "rating": 4.8,
+    "summary": "iPhone 15 Pro Max asli garansi iBox, bukan kw atau palsu",
+    "description": "Kondisi super mulus 100% original, dijamin tidak tiruan atau barang scam."
+  },
+  {
+    "name": "Kaos Polo Hitam Premium",
+    "category": "Fashion",
+    "price": 150000.0,
+    "rating": 4.2,
+    "summary": "Bahan katun nyaman dipakai sehari-hari",
+    "description": "Bahan adem premium, kualitas kw super tetapi awet dan tidak cepat melar."
+  },
+  {
+    "name": "Laptop ROG Zephyrus G14",
+    "category": "Komputer",
+    "price": 28000000.0,
+    "rating": 4.9,
+    "summary": "Laptop gaming gahar dengan AMD Ryzen 9 dan RTX 4060",
+    "description": "Kondisi baru gres bergaransi resmi ASUS Indonesia."
+  },
+  {
+    "name": "Headphone Bluetooth Mini",
+    "category": "Gadget",
+    "price": 80000.0,
+    "rating": 3.5,
+    "summary": "Suara ngebass dengan harga sangat murah",
+    "description": "Barang kw murah meriah suara cukup mantap untuk harian."
+  },
+  {
+    "name": "Sepatu Roda Anak",
+    "category": "Mainan",
+    "price": 350000.0,
+    "rating": 4.5,
+    "summary": "Sepatu roda ukuran adjustable untuk anak-anak",
+    "description": "Produk lokal berkualitas tinggi, bukan barang palsu murahan."
+  }
+]
